@@ -1,16 +1,8 @@
 <html>
-  <head>
-    <style>
-      /* Disable default focus or title tooltips */
-      #sankey_chart div[title] {
-        pointer-events: none; /* Disable tooltips but allow hovering */
-      }
-    </style>
-  </head>
   <body>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-    <!-- Diagram with Tooltips Disabled -->
+    <!-- Diagram with Custom Tooltip -->
     <div id="sankey_chart" style="width: 750px; height: 450px;"></div>
 
     <script type="text/javascript">
@@ -77,11 +69,14 @@
           ["Immersive Experiences", "User Interface Design", 200],
         ]);
 
-          var options = {
+        var options = {
           width: 750,
           height: 450,
           sankey: {
-            tooltip: { trigger: "none" }, // Disable tooltips
+            tooltip: { 
+              trigger: "focus", // Enable tooltips for customization
+              isHtml: true      // Use custom HTML for tooltips
+            },
             link: {
               colorMode: "gradient",
               colors: [
@@ -110,15 +105,12 @@
         );
         chart.draw(data, options);
 
-        // Interactivity preserved: add event listener for user clicks
-        google.visualization.events.addListener(chart, "select", function () {
-          var selection = chart.getSelection();
-          if (selection.length) {
-            var from = data.getValue(selection[0].row, 0);
-            var to = data.getValue(selection[0].row, 1);
-            console.log("Selected connection:", from, "→", to);
-            alert("You clicked: " + from + " → " + to);
-          }
+        // Customize tooltips on hover
+        google.visualization.events.addListener(chart, 'onmouseover', function () {
+          // Modify tooltip content
+          document.querySelectorAll('.google-visualization-tooltip').forEach(tooltip => {
+            tooltip.innerHTML = '.'; // Change to '' for an empty tooltip
+          });
         });
       }
     </script>
