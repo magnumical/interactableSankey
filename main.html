@@ -2,7 +2,8 @@
   <body>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-    <div id="sankey_chart" style="width: 1400px; height: 1000px;"></div>
+    <!-- Diagram with Balanced Weights -->
+    <div id="sankey_chart" style="width: 658px; height: 376px;"></div>
 
     <script type="text/javascript">
       google.charts.load("current", { packages: ["sankey"] });
@@ -14,93 +15,86 @@
         data.addColumn("string", "To");
         data.addColumn("number", "Weight");
         data.addRows([
-          // Organizations to Fields
-          ["Lady Davis Institute", "Machine Learning", 1200],
-          ["Lady Davis Institute", "Data Science", 800],
-          ["Huawei", "Machine Learning", 1200],
-          ["Huawei", "Data Science", 1000],
-          ["Huawei", "Physiological Computing", 1000],
-          ["MuSAE Lab", "Machine Learning", 1000],
-          ["MuSAE Lab", "Virtual Reality", 800],
-          ["MuSAE Lab", "Physiological Computing", 600],
-          ["Université du Québec at Outaouais", "Virtual Reality", 600],
-          ["Université du Québec at Outaouais", "Machine Learning", 800],
+          // First Layer: Organizations to Fields
+          ["Lady Davis Institute", "Machine Learning", 900],
+          ["Lady Davis Institute", "Data Science", 700],
+          ["Huawei", "Machine Learning", 800],
+          ["Huawei", "Data Science", 600],
+          ["Huawei", "Physiological Computing", 600],
+          ["MuSAE Lab", "Machine Learning", 700],
+          ["MuSAE Lab", "Virtual Reality", 600],
+          ["MuSAE Lab", "Physiological Computing", 400],
+          ["Université du Québec at Outaouais", "Virtual Reality", 700],
+          ["Université du Québec at Outaouais", "Machine Learning", 500],
+
+          // Second Layer: Fields to Subfields
+          // Machine Learning Subfields
+          ["Machine Learning", "Regression | Classification | Clustering", 1200],
+          ["Regression | Classification | Clustering", "Ensemble Learning", 400],
+          ["Regression | Classification | Clustering", "Regularization", 400],
+          ["Regression | Classification | Clustering", "Federated Learning", 400],
+          ["Machine Learning", "Deep Learning", 1000],
+          ["Deep Learning", "Large Language Models", 400],
+          ["Deep Learning", "NLPS", 400],
+          ["Deep Learning", "TTS I STT", 200],
+          ["Machine Learning", "Interpretable ML", 800],
+          ["Interpretable ML", "Partial Dependence Plot", 300],
+          ["Interpretable ML", "Accumulated Local Effects", 300],
+          ["Interpretable ML", "Model Fairness", 200],
+          ["Machine Learning", "Multi-modal ML", 700],
+          ["Multi-modal ML", "RAG", 350],
+          ["Multi-modal ML", "Data Fusion Concepts", 350],
 
           // Data Science Subfields
-          ["Data Science", "Dimensionality Reduction", 400],
-          ["Dimensionality Reduction", "Feature Selection", 150],
+          ["Data Science", "Dimensionality Reduction", 500],
+          ["Dimensionality Reduction", "Feature Selection", 200],
           ["Dimensionality Reduction", "Feature Projection", 150],
-          ["Dimensionality Reduction", "Feature Extraction", 100],
-          ["Data Science", "Visualization", 200],
-          ["Data Science", "Statistical Analysis", 200],
+          ["Dimensionality Reduction", "Feature Extraction", 150],
+          ["Data Science", "Visualization", 300],
+          ["Data Science", "Statistical Analysis", 300],
           ["Data Science", "Data Cleaning and Preparation", 200],
 
-          // Machine Learning Subfields
-          ["Machine Learning", "Regression | Classification | Clustering", 600],
-          ["Regression | Classification | Clustering", "Ensemble Learning", 200],
-          ["Regression | Classification | Clustering", "Regularization", 200],
-          ["Regression | Classification | Clustering", "Federated Learning", 200],
-          ["Machine Learning", "Deep Learning", 400],
-          ["Deep Learning", "Large Language Models", 150],
-          ["Deep Learning", "NLPS", 150],
-          ["Machine Learning", "Multi-modal ML", 400],
-          ["Multi-modal ML", "RAG", 200],
-          ["Multi-modal ML", "TTS I STT", 200],
-          ["Machine Learning", "Adversarial Attacks", 300],
-          ["Machine Learning", "Personalized Assistance", 300],
-          ["Machine Learning", "Interpretable ML", 400],
-          ["Interpretable ML", "Partial Dependence Plot", 150],
-          ["Interpretable ML", "Accumulated Local Effects", 150],
-          ["Interpretable ML", "Model Fairness", 100],
-
           // Physiological Computing Subfields
-          ["Physiological Computing", "Biofeedback", 250],
-          ["Physiological Computing", "Human-Computer Interaction", 250],
-          ["Physiological Computing", "Health Monitoring", 250],
-          ["Physiological Computing", "Multi-Modal Signal Processing", 150],
-          ["Physiological Computing", "Wearable Technology", 100],
+          ["Physiological Computing", "Biofeedback", 300],
+          ["Physiological Computing", "Human-Computer Interaction", 300],
+          ["Physiological Computing", "Health Monitoring", 300],
+          ["Physiological Computing", "Multi-Modal Signal Processing", 200],
+          ["Physiological Computing", "Wearable Technology", 200],
 
           // Virtual Reality Subfields
-          ["Virtual Reality", "Game Development", 200],
-          ["Virtual Reality", "Therapeutic Applications", 200],
-          ["Virtual Reality", "User Experience in VR", 200],
-          ["Virtual Reality", "Immersive Experiences", 200],
-          ["Immersive Experiences", "Multisensory Integration", 100],
-          ["Immersive Experiences", "User Interface Design", 100],
+          ["Virtual Reality", "Game Development", 400],
+          ["Virtual Reality", "Therapeutic Applications", 400],
+          ["Virtual Reality", "User Experience in VR", 400],
+          ["Virtual Reality", "Immersive Experiences", 400],
+          ["Immersive Experiences", "Multisensory Integration", 200],
+          ["Immersive Experiences", "User Interface Design", 200],
         ]);
 
         var options = {
-          width: 1400,
+          width: 658, // Adjusted width
+          height: 376, // Adjusted height
           sankey: {
             link: {
               colorMode: "gradient",
               colors: [
-                "#03045E",
-                "#023E8A",
-                "#0077B6",
-                "#0096C7",
-                "#00B4D8",
-                "#48CAE4",
-                "#90E0EF",
-                "#ADE8F4",
-                "#CAF0F8",
+                "#D88C9A", // Soft Rose
+                "#F2D0A9", // Pale Peach
+                "#F1E3D3", // Cream White
+                "#99C1B9", // Light Teal
+                "#8E7DBE", // Lavender
               ],
             },
             node: {
               colors: [
-                "#03045E",
-                "#023E8A",
-                "#0077B6",
-                "#0096C7",
-                "#00B4D8",
-                "#48CAE4",
-                "#90E0EF",
-                "#ADE8F4",
-                "#CAF0F8",
+                "#D88C9A", // Soft Rose
+                "#F2D0A9", // Pale Peach
+                "#F1E3D3", // Cream White
+                "#99C1B9", // Light Teal
+                "#8E7DBE", // Lavender
               ],
               label: {
                 fontName: "Arial",
-                fontSize: 12,
+                fontSize: 10, // Adjusted font size for smaller diagram
                 color: "#333",
               },
             },
