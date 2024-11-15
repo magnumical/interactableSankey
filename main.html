@@ -1,9 +1,17 @@
 <html>
+  <head>
+    <style>
+      /* Disable default focus or title tooltips */
+      #sankey_chart div[title] {
+        pointer-events: none; /* Disable tooltips but allow hovering */
+      }
+    </style>
+  </head>
   <body>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-    <!-- Diagram with Balanced Weights -->
-    <div id="sankey_chart" style="width: 658px; height: 376px;"></div>
+    <!-- Diagram with Tooltips Disabled -->
+    <div id="sankey_chart" style="width: 750px; height: 450px;"></div>
 
     <script type="text/javascript">
       google.charts.load("current", { packages: ["sankey"] });
@@ -18,17 +26,16 @@
           // First Layer: Organizations to Fields
           ["Lady Davis Institute", "Machine Learning", 900],
           ["Lady Davis Institute", "Data Science", 700],
-          ["Huawei", "Machine Learning", 800],
+          ["Huawei", "Machine Learning", 900],
           ["Huawei", "Data Science", 600],
-          ["Huawei", "Physiological Computing", 600],
-          ["MuSAE Lab", "Machine Learning", 700],
-          ["MuSAE Lab", "Virtual Reality", 600],
-          ["MuSAE Lab", "Physiological Computing", 400],
-          ["Université du Québec at Outaouais", "Virtual Reality", 700],
-          ["Université du Québec at Outaouais", "Machine Learning", 500],
+          ["Huawei", "Physiological Computing", 500],
+          ["MuSAE Lab", "Machine Learning", 900],
+          ["MuSAE Lab", "Virtual Reality", 800],
+          ["MuSAE Lab", "Physiological Computing", 700],
+          ["Université du Québec at Outaouais", "Virtual Reality", 800],
+          ["Université du Québec at Outaouais", "Machine Learning", 900],
 
           // Second Layer: Fields to Subfields
-          // Machine Learning Subfields
           ["Machine Learning", "Regression | Classification | Clustering", 1200],
           ["Regression | Classification | Clustering", "Ensemble Learning", 400],
           ["Regression | Classification | Clustering", "Regularization", 400],
@@ -70,10 +77,11 @@
           ["Immersive Experiences", "User Interface Design", 200],
         ]);
 
-        var options = {
-          width: 658, // Adjusted width
-          height: 376, // Adjusted height
+          var options = {
+          width: 750,
+          height: 450,
           sankey: {
+            tooltip: { trigger: "none" }, // Disable tooltips
             link: {
               colorMode: "gradient",
               colors: [
@@ -86,15 +94,11 @@
             },
             node: {
               colors: [
-                "#D88C9A", // Soft Rose
-                "#F2D0A9", // Pale Peach
-                "#F1E3D3", // Cream White
-                "#99C1B9", // Light Teal
-                "#8E7DBE", // Lavender
+                "#D88C9A", "#F2D0A9", "#F1E3D3", "#99C1B9", "#8E7DBE",
               ],
               label: {
                 fontName: "Arial",
-                fontSize: 10, // Adjusted font size for smaller diagram
+                fontSize: 12,
                 color: "#333",
               },
             },
@@ -105,6 +109,17 @@
           document.getElementById("sankey_chart")
         );
         chart.draw(data, options);
+
+        // Interactivity preserved: add event listener for user clicks
+        google.visualization.events.addListener(chart, "select", function () {
+          var selection = chart.getSelection();
+          if (selection.length) {
+            var from = data.getValue(selection[0].row, 0);
+            var to = data.getValue(selection[0].row, 1);
+            console.log("Selected connection:", from, "→", to);
+            alert("You clicked: " + from + " → " + to);
+          }
+        });
       }
     </script>
   </body>
