@@ -1,0 +1,117 @@
+<html>
+  <body>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <div id="sankey_chart" style="width: 1400px; height: 1000px;"></div>
+
+    <script type="text/javascript">
+      google.charts.load("current", { packages: ["sankey"] });
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn("string", "From");
+        data.addColumn("string", "To");
+        data.addColumn("number", "Weight");
+        data.addRows([
+          // Organizations to Fields
+          ["Lady Davis Institute", "Machine Learning", 1200],
+          ["Lady Davis Institute", "Data Science", 800],
+          ["Huawei", "Machine Learning", 1200],
+          ["Huawei", "Data Science", 1000],
+          ["Huawei", "Physiological Computing", 1000],
+          ["MuSAE Lab", "Machine Learning", 1000],
+          ["MuSAE Lab", "Virtual Reality", 800],
+          ["MuSAE Lab", "Physiological Computing", 600],
+          ["Université du Québec at Outaouais", "Virtual Reality", 600],
+          ["Université du Québec at Outaouais", "Machine Learning", 800],
+
+          // Data Science Subfields
+          ["Data Science", "Dimensionality Reduction", 400],
+          ["Dimensionality Reduction", "Feature Selection", 150],
+          ["Dimensionality Reduction", "Feature Projection", 150],
+          ["Dimensionality Reduction", "Feature Extraction", 100],
+          ["Data Science", "Visualization", 200],
+          ["Data Science", "Statistical Analysis", 200],
+          ["Data Science", "Data Cleaning and Preparation", 200],
+
+          // Machine Learning Subfields
+          ["Machine Learning", "Regression | Classification | Clustering", 600],
+          ["Regression | Classification | Clustering", "Ensemble Learning", 200],
+          ["Regression | Classification | Clustering", "Regularization", 200],
+          ["Regression | Classification | Clustering", "Federated Learning", 200],
+          ["Machine Learning", "Deep Learning", 400],
+          ["Deep Learning", "Large Language Models", 150],
+          ["Deep Learning", "NLPS", 150],
+          ["Machine Learning", "Multi-modal ML", 400],
+          ["Multi-modal ML", "RAG", 200],
+          ["Multi-modal ML", "TTS I STT", 200],
+          ["Machine Learning", "Adversarial Attacks", 300],
+          ["Machine Learning", "Personalized Assistance", 300],
+          ["Machine Learning", "Interpretable ML", 400],
+          ["Interpretable ML", "Partial Dependence Plot", 150],
+          ["Interpretable ML", "Accumulated Local Effects", 150],
+          ["Interpretable ML", "Model Fairness", 100],
+
+          // Physiological Computing Subfields
+          ["Physiological Computing", "Biofeedback", 250],
+          ["Physiological Computing", "Human-Computer Interaction", 250],
+          ["Physiological Computing", "Health Monitoring", 250],
+          ["Physiological Computing", "Multi-Modal Signal Processing", 150],
+          ["Physiological Computing", "Wearable Technology", 100],
+
+          // Virtual Reality Subfields
+          ["Virtual Reality", "Game Development", 200],
+          ["Virtual Reality", "Therapeutic Applications", 200],
+          ["Virtual Reality", "User Experience in VR", 200],
+          ["Virtual Reality", "Immersive Experiences", 200],
+          ["Immersive Experiences", "Multisensory Integration", 100],
+          ["Immersive Experiences", "User Interface Design", 100],
+        ]);
+
+        var options = {
+          width: 1400,
+          sankey: {
+            link: {
+              colorMode: "gradient",
+              colors: [
+                "#03045E",
+                "#023E8A",
+                "#0077B6",
+                "#0096C7",
+                "#00B4D8",
+                "#48CAE4",
+                "#90E0EF",
+                "#ADE8F4",
+                "#CAF0F8",
+              ],
+            },
+            node: {
+              colors: [
+                "#03045E",
+                "#023E8A",
+                "#0077B6",
+                "#0096C7",
+                "#00B4D8",
+                "#48CAE4",
+                "#90E0EF",
+                "#ADE8F4",
+                "#CAF0F8",
+              ],
+              label: {
+                fontName: "Arial",
+                fontSize: 12,
+                color: "#333",
+              },
+            },
+          },
+        };
+
+        var chart = new google.visualization.Sankey(
+          document.getElementById("sankey_chart")
+        );
+        chart.draw(data, options);
+      }
+    </script>
+  </body>
+</html>
