@@ -1,3 +1,4 @@
+<!-- wp:html -->
 <html>
   <body>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -16,14 +17,14 @@
         data.addColumn("number", "Weight");
         data.addRows([
           // First Layer: Organizations to Fields
-          ["Lady Davis Institute", "Machine Learning", 900],
+          ["Lady Davis Institute", "Machine Learning", 1000],
           ["Lady Davis Institute", "Data Science", 700],
           ["Huawei", "Machine Learning", 900],
           ["Huawei", "Data Science", 600],
           ["Huawei", "Physiological Computing", 500],
           ["MuSAE Lab", "Machine Learning", 900],
           ["MuSAE Lab", "Virtual Reality", 800],
-          ["MuSAE Lab", "Physiological Computing", 700],
+          ["MuSAE Lab", "Physiological Computing", 500],
           ["Université du Québec at Outaouais", "Virtual Reality", 800],
           ["Université du Québec at Outaouais", "Machine Learning", 900],
 
@@ -69,7 +70,7 @@
         ]);
 
         var options = {
-          width: 800,
+          width: 850,
           height: 600,
           sankey: {
             tooltip: { 
@@ -111,3 +112,4 @@
     </script>
   </body>
 </html>
+<!-- /wp:html -->
