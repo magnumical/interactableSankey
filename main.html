@@ -2,8 +2,8 @@
   <body>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-    <!-- Diagram with Custom Tooltip -->
-    <div id="sankey_chart" style="width: 750px; height: 450px;"></div>
+    <!-- Diagram with Improved Flow -->
+    <div id="sankey_chart" style="width: 800px; height: 600px;"></div>
 
     <script type="text/javascript">
       google.charts.load("current", { packages: ["sankey"] });
@@ -28,50 +28,49 @@
           ["Université du Québec at Outaouais", "Machine Learning", 900],
 
           // Second Layer: Fields to Subfields
-          ["Machine Learning", "Regression | Classification | Clustering", 1200],
-          ["Regression | Classification | Clustering", "Ensemble Learning", 400],
-          ["Regression | Classification | Clustering", "Regularization", 400],
-          ["Regression | Classification | Clustering", "Federated Learning", 400],
+          ["Machine Learning", "Supervised Learning", 1200],
+          ["Supervised Learning", "Ensemble Learning", 400],
+          ["Supervised Learning", "Regularization", 400],
+          ["Supervised Learning", "Federated Learning", 400],
           ["Machine Learning", "Deep Learning", 1000],
           ["Deep Learning", "Large Language Models", 400],
-          ["Deep Learning", "NLPS", 400],
-          ["Deep Learning", "TTS I STT", 200],
+          ["Deep Learning", "Natural Language Processing", 400],
+          ["Deep Learning", "Speech Recognition", 200],
           ["Machine Learning", "Interpretable ML", 800],
-          ["Interpretable ML", "Partial Dependence Plot", 300],
-          ["Interpretable ML", "Accumulated Local Effects", 300],
-          ["Interpretable ML", "Model Fairness", 200],
+          ["Interpretable ML", "Model Visualization", 300],
+          ["Interpretable ML", "Bias Detection", 300],
+          ["Interpretable ML", "Fairness Metrics", 200],
           ["Machine Learning", "Multi-modal ML", 700],
-          ["Multi-modal ML", "RAG", 350],
-          ["Multi-modal ML", "Data Fusion Concepts", 350],
+          ["Multi-modal ML", "Cross-domain Learning", 350],
+          ["Multi-modal ML", "Data Fusion", 350],
 
           // Data Science Subfields
           ["Data Science", "Dimensionality Reduction", 500],
           ["Dimensionality Reduction", "Feature Selection", 200],
-          ["Dimensionality Reduction", "Feature Projection", 150],
-          ["Dimensionality Reduction", "Feature Extraction", 150],
-          ["Data Science", "Visualization", 300],
+          ["Dimensionality Reduction", "Principal Component Analysis", 150],
+          ["Dimensionality Reduction", "Latent Semantic Analysis", 150],
+          ["Data Science", "Data Visualization", 300],
           ["Data Science", "Statistical Analysis", 300],
-          ["Data Science", "Data Cleaning and Preparation", 200],
+          ["Data Science", "Data Cleaning", 200],
 
           // Physiological Computing Subfields
-          ["Physiological Computing", "Biofeedback", 300],
-          ["Physiological Computing", "Human-Computer Interaction", 300],
           ["Physiological Computing", "Health Monitoring", 300],
-          ["Physiological Computing", "Multi-Modal Signal Processing", 200],
-          ["Physiological Computing", "Wearable Technology", 200],
+          ["Physiological Computing", "Wearable Sensors", 200],
+          ["Physiological Computing", "Biofeedback Systems", 300],
+          ["Physiological Computing", "Multi-modal Signal Analysis", 200],
 
           // Virtual Reality Subfields
           ["Virtual Reality", "Game Development", 400],
           ["Virtual Reality", "Therapeutic Applications", 400],
-          ["Virtual Reality", "User Experience in VR", 400],
-          ["Virtual Reality", "Immersive Experiences", 400],
-          ["Immersive Experiences", "Multisensory Integration", 200],
-          ["Immersive Experiences", "User Interface Design", 200],
+          ["Virtual Reality", "User Experience Design", 400],
+          ["Virtual Reality", "Immersive Simulations", 400],
+          ["Immersive Simulations", "Multi-sensory Feedback", 200],
+          ["Immersive Simulations", "Interactive Interfaces", 200],
         ]);
 
         var options = {
-          width: 750,
-          height: 450,
+          width: 800,
+          height: 600,
           sankey: {
             tooltip: { 
               trigger: "focus", // Enable tooltips for customization
@@ -80,11 +79,7 @@
             link: {
               colorMode: "gradient",
               colors: [
-                "#D88C9A", // Soft Rose
-                "#F2D0A9", // Pale Peach
-                "#F1E3D3", // Cream White
-                "#99C1B9", // Light Teal
-                "#8E7DBE", // Lavender
+                "#D88C9A", "#F2D0A9", "#F1E3D3", "#99C1B9", "#8E7DBE",
               ],
             },
             node: {
