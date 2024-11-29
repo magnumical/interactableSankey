@@ -14,18 +14,18 @@
         data.addColumn("string", "From");
         data.addColumn("string", "To");
         data.addColumn("number", "Weight");
-        data.addRows([
+       data.addRows([
           // First Layer: Organizations to Fields
-          ["CIUSSS West-Central Montreal", "Machine Learning", 1100],
-          ["CIUSSS West-Central Montreal", "Data Science", 800],
+          ["CIUSSS West-Central Montreal", "Machine Learning", 700],
+          ["CIUSSS West-Central Montreal", "Data Science", 850],
           ["Huawei", "Machine Learning", 1000],
-          ["Huawei", "Data Science", 800],
+          ["Huawei", "Data Science", 900],
           ["Huawei", "Physiological Computing", 500],
-          ["MuSAE Lab", "Machine Learning", 900],
-          ["MuSAE Lab", "Virtual Reality", 800],
-          ["MuSAE Lab", "Physiological Computing", 500],
-          ["Université du Québec at Outaouais", "Virtual Reality", 800],
-          ["Université du Québec at Outaouais", "Machine Learning", 900],
+          ["INRS-EMT", "Machine Learning", 900],
+          ["INRS-EMT", "Virtual Reality", 800],
+          ["INRS-EMT", "Physiological Computing", 500],
+          ["UQO--Bruyere Hospital", "Virtual Reality", 800],
+          ["UQO--Bruyere Hospital", "Machine Learning", 900],
 
           // Second Layer: Fields to Subfields
           ["Machine Learning", "Supervised Learning", 1400],
@@ -34,9 +34,8 @@
           ["Supervised Learning", "Federated Learning", 300],
         	["Supervised Learning", "on-GPU Computing", 300],
 
-          ["Machine Learning", "Deep Learning", 1000],
+          ["Machine Learning", "Deep Learning",  600],
           ["Deep Learning", "Large Language Models", 400],
-          ["Deep Learning", "Natural Language Processing", 400],
           ["Deep Learning", "Speech Recognition", 200],
           ["Machine Learning", "Interpretable ML", 800],
           ["Interpretable ML", "Model Visualization", 300],
@@ -48,7 +47,7 @@
           
 
           // Data Science Subfields
-           ["Data Science", "Data Exploration", 500],
+           ["Data Science", "Data Exploration", 700],
            ["Data Exploration", "Visualization", 500],
 
           ["Data Science", "Dimensionality Reduction", 300],
@@ -58,8 +57,8 @@
           ["Data Science", "Statistical Analysis", 300],
           ["Data Exploration", "Data Cleaning", 200],
            ["Data Science", "Storage", 300],
-           ["Storage", "SQL", 150],
-           ["Storage", "Non-SQL", 150],
+           ["Storage", "SQL/Non-SQL", 300],
+          
 
           // Physiological Computing Subfields
           ["Physiological Computing", "Health Monitoring", 300],
